@@ -18,11 +18,6 @@ Simulate a normal white noise sample of size 10 with the mean 2.3 and standard d
 
 ### Answers to Question 5: 
 
-```{r}
-my_sample <- sample(1:10, 5) 
-print(my_sample)
-
-```
 
 ```{sample size 10, echo=TRUE}
 my_sample <- rnorm(n = 10, mean = 2.3, sd = 1.2) 

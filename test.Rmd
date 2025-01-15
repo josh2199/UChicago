@@ -1,0 +1,111 @@
+---
+title: "Time Series Analysis and Forecasting - Assignment 1"
+author: "Joshua Carbajal"
+date: "2025-01-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd("C:/Users/Joshua/Downloads/")
+library(forecast)
+library(dplyr)
+```
+
+## Question 5
+
+Simulate a normal white noise sample of size 10 with the mean 2.3 and standard deviation 1.2, and then calculate the sample mean and sample standard deviation. Are you satisfied with your computed results? How about the sample size 10,000?
+
+### Answers to Question 5: 
+
+```{r}
+my_sample <- sample(1:10, 5) 
+print(my_sample)
+
+```
+
+```{sample size 10, echo=TRUE}
+my_sample <- rnorm(n = 10, mean = 2.3, sd = 1.2) 
+sample_mean <- mean(my_sample) 
+sample_sd <- sd(my_sample) 
+cat("Sample mean:", sample_mean, "\n")
+cat("Sample standard deviation:", sample_sd, "\n")
+```
+
+
+
+```{sample size 10, echo=TRUE}
+# Set a seed for reproducibility
+set.seed(123)
+
+# Simulate a normal white noise sample
+sample_size <- 10
+mean_value <- 2.3
+sd_value <- 1.2
+white_noise <- rnorm(sample_size, mean = mean_value, sd = sd_value)
+
+# Calculate the sample mean
+sample_mean <- mean(white_noise)
+
+# Calculate the sample standard deviation
+sample_sd <- sd(white_noise)
+
+# Print the results
+white_noise
+sample_mean
+sample_sd
+```
+
+
+
+
+I am not satisfied with my results since the sample mean is 2.389551 and the sample standard deviation is 1.144541. With only 10 values, the random variation in the data can cause the sample mean and standard deviation to be quite different from the population parameters.
+
+
+```{sample size 10000, echo=TRUE}
+sample_10000<- rnorm(n = 10,000, mean = 2.3, sd = 1.2) 
+sample_mean_10000 <- mean(sample_10000) 
+sample_sd_10000 <- sd(sample_10000) 
+cat("Sample mean:", sample_mean_10000, "\n")
+cat("Sample standard deviation:", sample_sd_10000, "\n")
+```
+
+I was able to get closer to the true mean and standard deviation with a sample size of 10,000! This is because we reduce the white noise when we increase our sample size. With more data, the random fluctuations average out, and the estimates become more stable and accurate. This is known as the Law of Large Numbers. 
+
+## Question 6
+
+R comes with two time series that are already R’s ts() class: AirPassengers and JohnsonJohnson.
+
+a) What is each of those time series reporting?
+b) Find the start date, the end date and frequency of each of the time series.
+c) Plot separate time plots for the two time-series. Describe what the time plots tell us about the time series and compare the two plots. What are the main features of each of the time series?
+d) Plot the seasonal box plots of the two time-series and describe what those plots are conveying about the time series.
+
+
+### Answers to Question 6: 
+
+a) 
+
+The AirPassengers time series is reporting monthly totals of international airline passengers from 1949 to 1960 from the Box & Jenkins airline data.
+
+The JohnsonJohnson time series is reporting quarterly earnings (dollars) per Johnson & Johnson share from 1960–1980.
+
+b) 
+
+```{start end, echo=TRUE}
+
+library(tseries)
+library(fpp)
+library(ggplot2)
+
+start(AirPassengers)
+end(AirPassengers)
+
+start(JohnsonJohnson)
+end(JohnsonJohnson)
+
+
+```
+
+
+
